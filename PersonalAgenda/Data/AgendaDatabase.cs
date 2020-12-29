@@ -17,10 +17,34 @@ namespace PersonalAgenda.Data
             _database.CreateTableAsync<Activity>().Wait();
             _database.CreateTableAsync<NoteActivity>().Wait();
         }
+
+        public Task<int> SaveActivityAsync(Activity activity)
+        {
+            if (activity.ID != 0)
+            {
+                return _database.UpdateAsync(activity);
+            }
+            else
+            {
+                return _database.InsertAsync(activity);
+            }
+        }
+
+        public Task<int> DeleteActivityAsync(Activity activity)
+        {
+            return _database.DeleteAsync(activity);
+        }
+
+        public Task<List<Activity>> GetActivitiesAsync()
+        {
+            return _database.Table<Activity>().ToListAsync();
+        }
+
         public Task<List<Agenda>> GetNotesAsync()
         {
             return _database.Table<Agenda>().ToListAsync();
         }
+
         public Task<Agenda> GetNoteAsync(int id)
         {
             return _database.Table<Agenda>()
@@ -42,25 +66,8 @@ namespace PersonalAgenda.Data
         {
             return _database.DeleteAsync(note);
         }
-        public Task<int> SaveActivityAsync(Activity activity)
-        {
-            if (activity.ID != 0)
-            {
-                return _database.UpdateAsync(activity);
-            }
-            else
-            {
-                return _database.InsertAsync(activity);
-            }
-        }
-        public Task<int> DeleteActivityAsync(Activity activity)
-        {
-            return _database.DeleteAsync(activity);
-        }
-        public Task<List<Activity>> GetActivitiesAsync()
-        {
-            return _database.Table<Activity>().ToListAsync();
-        }
+             
+
         public Task<int> SaveNoteActivityAsync(NoteActivity noteactivity)
         {
             if (noteactivity.ID != 0)

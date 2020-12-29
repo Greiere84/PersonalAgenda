@@ -16,7 +16,7 @@ namespace PersonalAgenda
                 if (database == null)
                 {
                     database = new AgendaDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
-                    LocalApplicationData), "Notes1.db3"));
+                    LocalApplicationData), "Notes.db3"));
                 }
                 return database;
             }

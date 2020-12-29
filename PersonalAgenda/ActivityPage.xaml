@@ -7,9 +7,7 @@
              x:Class="PersonalAgenda.ActivityPage">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter activity" Margin="20"
-Text="{Binding Description}"
-HeightRequest="50" />
+            <Editor Placeholder="Enter activity" Margin="20" Text="{Binding Description}" HeightRequest="50" />
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -19,14 +17,9 @@ HeightRequest="50" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save"
-Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1"
-Text="Delete"
-Clicked="OnDeleteButtonClicked"/>
-                <ListView Grid.Row="1" x:Name="listView"
-Margin="20"
-ItemSelected="OnListViewItemSelected">
+                <Button Text="Save" Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+                <ListView Grid.Row="1" x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Description}" />
